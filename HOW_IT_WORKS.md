@@ -150,6 +150,27 @@ pip install arxiv
 
 弱关键词（如 `inference`, `serving`, `latency`, `NPU`, `kernel` 等）已被移除，以减少假阳性。
 
+## Git 管理规则
+
+仓库使用 Git 进行管理，提交规则如下：
+
+1. **基础文件单独提交**：脚本、文档、`.gitignore` 等基础文件作为 init commit 一次性提交。
+2. **每日索引独立提交**：每个 `YYYY-MM-DD.md` 文件作为一个独立 commit，commit message 就是日期本身，例如 `2026-06-26`。
+3. **不提交中间文件**：`YYYY-MM-DD_candidates.md`、PDF、虚拟环境等不应提交（已加入 `.gitignore`）。
+4. **推送规则**：每次生成新的每日索引后，及时 push 到远程仓库。
+
+### 常用命令
+
+```bash
+# 生成新一天的索引后
+python collect_candidates.py --date 2026-06-30
+# ... agent 筛选并翻译 ...
+
+git add 2026-06-30.md
+git commit -m "2026-06-30"
+git push origin main
+```
+
 ## 未来改进方向
 
 1. **LLM 自动筛选**：接入 LLM API，让模型根据标题和摘要自动判断相关性，替代阶段 2 的人工审查。

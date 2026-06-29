@@ -106,6 +106,17 @@ No automated tests exist. Verify a collection run by checking:
 No deployment configuration is present. The project is intended to run locally
 or in a personal cron job.
 
+### Git workflow
+
+The repository is managed with Git. When adding a new daily index:
+
+1. Add only the new `YYYY-MM-DD.md` file.
+2. Commit with the date as the message, e.g. `git commit -m "2026-06-30"`.
+3. Push to the remote repository.
+
+Do not commit temporary files such as `YYYY-MM-DD_candidates.md`, PDFs, or the
+`.venv/` directory.
+
 ## Security Considerations
 
 - Do not commit secrets, API keys, or private credentials.
