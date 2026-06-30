@@ -56,7 +56,8 @@ selected papers per day.
 **Default next step:** After selecting papers, the agent should immediately
 proceed to Stage 3 and Stage 4 automatically — generate the English index and
 translate it into the bilingual `YYYY-MM-DD.md` — without asking the user for
-confirmation.
+confirmation. After the bilingual file is saved, the agent should also commit
+and push it automatically as described in the Git workflow below.
 
 ### Stage 3: Generate English index
 
@@ -108,11 +109,13 @@ or in a personal cron job.
 
 ### Git workflow
 
-The repository is managed with Git. When adding a new daily index:
+The repository is managed with Git. When adding a new daily index, the agent
+should automatically commit and push it without asking the user for
+confirmation:
 
 1. Add only the new `YYYY-MM-DD.md` file.
 2. Commit with the date as the message, e.g. `git commit -m "2026-06-30"`.
-3. Push to the remote repository.
+3. Push to the remote repository, e.g. `git push origin main`.
 
 Do not commit temporary files such as `YYYY-MM-DD_candidates.md`, PDFs, or the
 `.venv/` directory.
